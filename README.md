@@ -1,4 +1,10 @@
 zabbix_internal_db_monitoring
 =============================
 
-script to monitor internal zabbix database parameters (MySQL only, Zabbix 1.8 only)
+Script to monitor internal zabbix database parameters (MySQL only, Zabbix 2.0 only)
+
+Place into your zabbix externalscripts directory, make executable by zabbix user
+
+Zabbix template exported from Zabbix 2.0.1 installation
+Zabbix template will create template named Zabbix_DB_Internal - just link this template to your local zabbix server host
+Check the created graphs
