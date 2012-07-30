@@ -3,7 +3,7 @@
 USER='zabbix'
 PASS='zabbix'
 
-case $2 in
+case $1 in
 'mysql.innodb_rows_inserted')
         echo "SHOW ENGINE INNODB STATUS" | mysql -t -u ${USER} --password=${PASS} | grep deleted | cut -d, -f1 | cut -d" " -f5
         ;;
@@ -52,7 +52,7 @@ case $2 in
         echo $SQL | mysql -u ${USER} --password=${PASS} -B --raw --skip-column-names | grep -v Sleep | wc -l
         ;;
 'table.size')
-    SQL="SELECT (data_length+index_length) FROM information_schema.TABLES where table_schema=\"zabbix\" AND table_name=\"$3\";"
+    SQL="SELECT (data_length+index_length) FROM information_schema.TABLES where table_schema=\"zabbix\" AND table_name=\"$2\";"
     echo $SQL | mysql --raw -u ${USER} --password=${PASS} | tail -n1 | awk '{ print $1 }'
         ;;
 'zabbix.db.size')
